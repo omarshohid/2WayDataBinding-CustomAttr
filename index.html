@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>2 Way data binding & Custom HTML attribute</title>
+<style type="text/css">
+html, body {
+	height: 100%;
+}
+
+body {
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	align-items: center;
+	font-family: monospace;
+	background-color: #222;
+	color: #fff;
+}
+
+input, select {
+	font-family: monospace;
+}
+
+.data {
+	display: flex;
+	margin: 1em;
+	flex-direction: column;
+}
+
+label {
+	margin: 1em 0;
+}
+
+.result {
+	font-size: 2em;
+}
+</style>
+<script src="./jquery-3.3.1.min.js"></script>
+<script src="./jquery-bindings.js"></script>
+<script src="./observe.js"></script>
+</head>
+<body>
+<section class="data">
+		<label for="firstName">First Name</label>
+		<input name= type="text" data-bind="firstName" />
+		<label for="lastName">Last Name:</label>
+		<input type="text" data-bind="lastName" />
+		<label for="age">Age:</label>
+		<input type="number" data-bind="age">
+		<label for="phone">Phone:</label>
+		<input type="text" data-bind="phone">
+		<label for="email">email:</label>
+		<input type="text" data-bind="email">
+		<label for="color">Color:</label>
+		<select data-bind="color" name="color">
+			<option value="Red">Red</option>
+			<option value="Green">Green</option>
+			<option value="Blue">Blue</option>
+			<option value="Yellow">Yellow</option>
+		</select>
+		<label for="color">A:</label>
+		<input type="number" data-bind="A">
+		<label for="color">B:</label>
+		<input type="number" data-bind="B">
+</section>
+<section class="result">
+		<span data-bind="firstName"></span>
+		<br>
+		<span data-bind="lastName"></span>
+		<br>
+		<span data-bind="age"></span>
+		<br>
+		<span data-bind="phone"></span>
+		<br>
+		<span data-bind="email"></span>
+		<br>
+		<span data-bind="color"></span>
+		<br>
+		<span data-bind="A"></span>+<span data-bind="B"></span>=<span data-bind="C"></span>
+</section>
+
+<script type="text/javascript">
+//var obj = {
+//	firstName: 'omar',
+//	lastName: 'shohid',
+//	age: 26,
+//	phone:'01939515753',
+//	email:'omarshohid@gmail.com',
+//	color: 'Red'
+//}
+var obj = {};
+//obj.C = (obj.A + obj.B);
+//Object.observe(obj, function(changes){    
+//    changes.forEach(function(change) {
+//        obj.C = obj.A + obj.B;         
+//    });
+//});
+var bindings = $.bindings(obj);
+</script>
+
+</body>
+</html>
